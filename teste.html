@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <!-- CORREÇÃO: viewport (estava com erro) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO: título e descrição -->
+  <title>Roberto — Portfólio de Desenvolvimento e UI</title>
+  <meta name="description" content="Portfólio de Roberto — projetos de front-end, UI/UX e integrações com IA. Confira projetos, contato e saiba mais.">
+
+  <!-- Social / Open Graph -->
+  <meta property="og:title" content="Roberto — Portfólio de Desenvolvimento">
+  <meta property="og:description" content="Projetos front-end, UI/UX e integrações com IA.">
+  <meta property="og:image" content="https://img.freepik.com/fotos-premium/close-up-do-macaco-mixedbreed-entre-o-chimpanze-e-o-bonobo-sorrindo_191971-22824.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- canonical (ajuste se tiver domínio) -->
+  <link rel="canonical" href="https://seudominio.exemplo/">
+
+  <!-- Bootstrap CSS (opcional: usamos utilitários) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- sua folha de estilo -->
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<!-- NAV (substitua sua tag <nav> anterior) -->
+  <nav class="site-nav">
+    <div class="container nav-inner">
+      <!-- LOGO / NOME: TROCAR AQUI -->
+      <a class="brand" href="#">Roberto</a> <!-- Troque "Roberto" pelo seu nome ou logo. -->
+  
+      <!-- SEARCH -->
+      <form class="nav-search" action="#" method="get" role="search" aria-label="Pesquisar no site">
+        <!-- name="q" é o parâmetro que o servidor receberá; troque se precisar -->
+        <input type="search" name="q" placeholder="Pesquisar projetos..." aria-label="Pesquisar">
+        <button type="submit" aria-label="Buscar">
+          <!-- ícone lupa (svg inline para evitar dependência) -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="2" fill="none"/>
+          </svg>
+        </button>
+      </form>
+  
+      <!-- NAV LINKS (desktop) -->
+      <ul class="nav-links">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#contato">Contato</a></li>
+        <!-- botão que abre modal (usa anchor para :target) -->
+        <li><a class="btn-outline" href="#modal">Me contrate</a></li>
+      </ul>
+  
+      <!-- OFFCANVAS TRIGGER (checkbox+label) - efeito sanfona no ícone -->
+      <input type="checkbox" id="offcanvas-toggle" class="offcanvas-toggle" aria-hidden="true">
+      <label for="offcanvas-toggle" class="offcanvas-btn" aria-label="Abrir menu">
+        <!-- 3 barras animadas (CSS cuidará da animação quando checkbox estiver checked) -->
+        <span class="hamburger" aria-hidden="true">
+          <span class="bar bar-1"></span>
+          <span class="bar bar-2"></span>
+          <span class="bar bar-3"></span>
+        </span>
+      </label>
+  
+      <!-- OFFCANVAS PANEL -->
+      <aside class="offcanvas-panel" aria-hidden="true">
+        <nav>
+          <ul>
+            <li><a href="#sobre" class="off-link">Sobre</a></li>
+            <li><a href="#projetos" class="off-link">Projetos</a></li>
+            <li><a href="#contato" class="off-link">Contato</a></li>
+            <li><a href="#modal" class="off-link">Me contrate</a></li>
+          </ul>
+        </nav>
+      </aside>
+    </div>
+  </nav>
+  </header>
+
+  <!-- HERO / SOBRE -->
+  <main>
+    <section id="sobre" class="hero section-light">
+      <div class="container hero-inner">
+        <img src="https://img.freepik.com/fotos-premium/close-up-do-macaco-mixedbreed-entre-o-chimpanze-e-o-bonobo-sorrindo_191971-22824.jpg?semt=ais_hybrid&w=740&q=80"
+             alt="Foto de perfil de Roberto" class="avatar">
+        <div class="hero-text">
+          <h1>Olá, eu sou <span class="accent">Roberto</span></h1>
+          <p class="lead">Desenvolvedor front-end —Criador de  soluções digitais modernas, responsivas e seguras para transformar ideias em resultados. 🚀</p>
+          <p class="hero-cta">
+            <a href="#projetos" class="btn-primary">Ver Projetos</a>
+            <a href="#contato" class="btn-secondary">Contato</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!--CARROSSEL-->
+    <div id= "divcarrossel">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="https://scansource.com.br/wp-content/uploads/2024/02/Imagem-Principal.jpg" class="d-block w-100 carousel-img" alt="Imagem ilustrativa">
+        </div>
+        <div class="carousel-item">
+          <img src="https://ravel.com.br/blog/wp-content/uploads/2023/02/Tendencias-de-tecnologia-2023-Capa.jpg" class="d-block w-100 carousel-img" alt="Imagem ilustrativa">
+        </div>
+        <div class="carousel-item">
+          <img src="https://fcamara.com/blog/wp-content/uploads/2024/06/Header-tecnologia-e-inovacao-fcamara.webp" class="d-block w-100 carousel-img" alt="Imagem ilustrativa">
+        </div>
+      </div>
+    </div></div>
+
+    <!-- PROJETOS: cards responsivos -->
+    <section id="projetos" class="section">
+      <div class="container">
+        <h2 class="section-title text-center">Meus Projetos</h2>
+        <div class="row g-4 projects-grid">
+
+          <!-- Card manual melhorado (corrigidos botões e a11y) -->
+          <article class="col-sm-6 col-md-4">
+            <div class="card h-100">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcH974x3azkTL0QeNOCvKPVQyBwBVGQ8zxAw&s" class="card-img-top" alt="Projeto Venha conhecer">
+              <div class="card-body">
+                <h3 class="card-title">Venha conhecer!</h3>
+                <p class="card-text">Integrações com IA e HTML/CSS para facilitar seu dia.</p>
+                <a class="btn btn-primary" href="https://www.youtube.com/watch?v=y4ltLH9iK8E" target="_blank" rel="noopener">Acesse agora</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Outros cards (mantive suas imagens e textos, corrigi estrutura) -->
+          <article class="col-sm-6 col-md-4">
+            <div class="card h-100">
+              <img src="https://www.meupositivo.com.br/doseujeito/wp-content/uploads/2018/11/novas-tecnologias-futuro.jpg" class="card-img-top" alt="Projeto 1">
+              <div class="card-body">
+                <h3 class="card-title">Projeto 1</h3>
+                <p class="card-text">Breve resumo sobre este projeto e as tecnologias usadas.</p>
+                <a class="btn btn-primary" href="https://www.youtube.com/watch?v=qgnWTBahoag" target="_blank" rel="noopener">Acesse o Projeto</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="col-sm-6 col-md-4">
+            <div class="card h-100">
+              <img src="https://alonza.com.br/wp-content/uploads/2023/08/projetos-em-html.webp" class="card-img-top" alt="Projeto 2">
+              <div class="card-body">
+                <h3 class="card-title">Projeto 2</h3>
+                <p class="card-text">Projeto simples com HTML e CSS, para prática de layout.</p>
+                <a class="btn btn-primary" href="https://www.youtube.com/watch?v=n_Etdr7Dbjs" target="_blank" rel="noopener">Acesse o Projeto</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- repita conforme necessário -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ACCORDION (sem JS) - usei <details> para acessibilidade e sem script -->
+    <section class="section section-light container my-5">
+      <h2>FAQ / Detalhes</h2>
+      <div class="accordion">
+        <details>
+          <summary>Que tecnologias você usa?</summary>
+          <p>HTML, CSS, Bootstrap (estilização), e integração com APIs/IA em projetos específicos.</p>
+        </details>
+        <details>
+          <summary>Você aceita trabalho remoto?</summary>
+          <p>Sim — disponibilidade para trabalhos freelance e projetos educacionais.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- CONTATO (usar o DOM para colocar essas informações para Whatsapp )-->
+    <section id="contato" class="section container">
+      <h2 class="section-title">Contato</h2>
+      <form class="contact-grid" action="#" method="post" aria-label="Formulário de contato">
+        <label>
+          <span>Nome</span>
+          <input type="text" name="nome" required>
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" required>
+        </label>
+        <label>
+          <span>Mensagem</span>
+          <textarea name="mensagem" rows="4" required></textarea>
+        </label>
+        <div class="form-actions">
+          <button class="btn-primary" type="submit">Enviar</button>
+          <a href="#modal" class="btn-outline">Solicitar Orçamento</a>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <!-- MODAL (sem JS) via :target -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-content">
+      <a class="modal-close" href="#" aria-label="Fechar modal">&times;</a>
+      <h3 id="modal-title">Solicitar Orçamento</h3>
+      <p>Envie um e-mail para <a href="mailto:robertomaximiro21@gmail.com">robertomaximiro21@gmail.com</a> ou clique no botão para um contato direto pelo WPP.</p>
+      <p><a class="btn-primary" href="https://wa.me/5521990851866?text=Olá gostaria de mas informações!">Ir para Contato</a></p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-col">
+        <h4>Sobre</h4>
+        <p>Sou um dev front-end apaixonado por interfaces limpas e acessíveis.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Links</h4>
+        <ul>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Social</h4>
+        <ul>
+          <li><a href="#" aria-label="YouTube">YouTube</a></li>
+          <li><a href="#" aria-label="LinkedIn">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <small>© <span id="ano"></span> Roberto — Todos os direitos reservados.</small>
+      </div>
+    </div>
+  </footer>
+
+  <!-- pequeno script para ano no footer (opcional, 1 linha) -->
+  <script>document.getElementById('ano').textContent = new Date().getFullYear();</script>
+
+  <!-- NOTA: removi bootstrap.bundle.js porque estamos usando interações CSS-only -->
+</body>
+</html>

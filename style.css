@@ -1,0 +1,256 @@
+:root{
+    --bg:#0f1724;
+    --muted:#6b7280;
+    --accent:#0ea5a4;
+    --card:#ffffff;
+    --glass: rgba(255,255,255,0.04);
+    --radius:12px;
+    --max-width:1100px;
+    --gap:1rem;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+  
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:linear-gradient(180deg,#f8fafc 0%, #eef2f7 100%);
+    color:#0b1220;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.5;
+  }
+  
+  /* NAV */
+  .site-nav{
+    background:rgba(15,23,36,0.95);
+    color:#fff;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 2px 8px rgba(2,6,23,0.15);
+  }
+
+  /* ---------- NAV UPDATES: alinhamento, search e hamburger animado ---------- */
+
+/* layout: deixa elementos alinhados no centro vertical */
+.nav-inner{ display:flex; align-items:center; gap:1rem; justify-content:space-between; }
+
+/* SEARCH (troque largura/max-width conforme quiser) */
+.nav-search{
+  display:flex;
+  align-items:center;
+  gap:0.35rem;
+  background:rgba(255,255,255,0.06);
+  padding:4px;
+  border-radius:10px;
+}
+.nav-search input[type="search"]{
+  border:0; outline:none; background:transparent; color:inherit; padding:6px 8px; width:220px;
+  font-size:0.95rem;
+}
+.nav-search button{
+  border:0; background:transparent; padding:6px; display:inline-flex; align-items:center; justify-content:center;
+  cursor:pointer; color:inherit;
+}
+
+/* Oculta search em telas muito pequenas (ajuste se quiser sempre visível) */
+@media (max-width:560px){
+  .nav-search{ display:none; }
+}
+
+/* NAV LINKS - alinhamento dos itens e ícones (se tiver) */
+.nav-links{ display:flex; gap:0.5rem; align-items:center; margin:0; padding:0; list-style:none; }
+.nav-links li{ display:flex; align-items:center; }
+
+/* Se você quiser adicionar pequenos ícones nos links, mantenha-os inline-block e alinhados com center.
+   Exemplo: <a><svg...></svg><span>Texto</span></a> - o CSS abaixo garante alinhamento. */
+.nav-links a{ display:inline-flex; align-items:center; gap:0.45rem; padding:0.45rem 0.65rem; text-decoration:none; border-radius:8px; color:inherit; }
+
+/* OFFCANVAS HAMBURGER (3 barras) */
+.offcanvas-btn{ display:inline-flex; align-items:center; justify-content:center; cursor:pointer; width:44px; height:44px; border-radius:8px; }
+.hamburger{ display:inline-block; width:22px; height:18px; position:relative; }
+.hamburger .bar{
+  display:block;
+  height:2px;
+  width:100%;
+  background:currentColor;
+  border-radius:2px;
+  position:absolute;
+  left:0;
+  transition: transform .28s ease, top .28s ease, opacity .18s ease;
+}
+.hamburger .bar-1{ top:0; }
+.hamburger .bar-2{ top:8px; }
+.hamburger .bar-3{ top:16px; }
+
+/* Efeito "sanfona"/transformação quando o checkbox estiver marcado */
+.offcanvas-toggle{ display:none; }
+.offcanvas-toggle:checked + label .hamburger .bar-1{
+  transform: translateY(8px) rotate(45deg);
+}
+.offcanvas-toggle:checked + label .hamburger .bar-2{
+  opacity:0;
+}
+.offcanvas-toggle:checked + label .hamburger .bar-3{
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Ajuste visual do botão (quando aberto) */
+.offcanvas-toggle:checked + label { background: rgba(255,255,255,0.06); }
+
+/* OFFCANVAS PANEL (mantive comportamento similar ao anterior) */
+.offcanvas-panel{
+  position:fixed; top:0; right:-320px; width:300px; height:100vh; background:var(--bg); color:#fff;
+  padding:2rem 1rem; transition:right .28s ease; z-index:999;
+}
+.offcanvas-toggle:checked ~ .offcanvas-panel{ right:0; }
+
+/* quando usuário clicar em um link do offcanvas, você pode querer fechá-lo — sem JS é complicado
+   mas uma alternativa é usar anchors internas/:target; se quiser ZERO JS, deixe assim. */
+.offcanvas-panel nav ul{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.8rem; }
+.offcanvas-panel .off-link{ color:inherit; text-decoration:none; padding:.4rem 0; }
+
+/* Responsividade: oculta nav-links em mobile e mostra o botão hamburger */
+@media (max-width:900px){
+  .nav-links{ display:none; }
+  .offcanvas-btn{ display:inline-flex; }
+}
+@media (min-width:901px){
+  .offcanvas-btn{ display:none; } /* no desktop não mostramos o trigger */
+}
+
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:var(--gap);
+    padding:0.6rem 1rem;
+    max-width:var(--max-width);
+    margin:0 auto;
+  }
+  .brand{font-weight:700; text-decoration:none; color:inherit; font-size:1.05rem}
+  .nav-links{display:flex; gap:0.5rem; list-style:none; margin:0; padding:0}
+  .nav-links a{color:rgba(255,255,255,0.95); text-decoration:none; padding:0.5rem 0.75rem; border-radius:8px}
+  .nav-links a:hover, .nav-links a:focus{background:rgba(255,255,255,0.04); outline:2px solid rgba(255,255,255,0.06)}
+  
+  /* hamburger / offcanvas trigger */
+  .offcanvas-btn{display:none; cursor:pointer}
+  .offcanvas-btn .hamburger{
+    display:inline-block;
+    width:28px; height:2px; background:#fff; position:relative;
+  }
+  .offcanvas-btn .hamburger::before,
+  .offcanvas-btn .hamburger::after{
+    content:""; position:absolute; left:0; width:100%; height:2px; background:#fff;
+  }
+  .offcanvas-btn .hamburger::before{top:-8px}
+  .offcanvas-btn .hamburger::after{top:8px}
+  
+  /* OFFCANVAS panel */
+  .offcanvas-panel{
+    position:fixed; top:0; right:-320px; width:300px; height:100vh; background:var(--bg);
+    color:#fff; padding:2rem 1rem; transition:right .28s ease; z-index:999;
+    box-shadow:-12px 0 24px rgba(2,6,23,0.5);
+  }
+  .offcanvas-panel nav ul{list-style:none; padding:0; margin:0}
+  .offcanvas-panel nav a{display:block; padding:0.8rem 0; color:#fff; text-decoration:none}
+  .offcanvas-toggle{display:none}
+  /* quando checked, mostra offcanvas */
+  .offcanvas-toggle:checked ~ .offcanvas-panel{right:0}
+  
+  /* HERO */
+  .hero{padding:6rem 0 3rem}
+  .hero-inner{display:flex; align-items:center; gap:2rem; max-width:var(--max-width); margin:0 auto; padding:1rem}
+  .avatar{width:140px; height:140px; object-fit:cover; border-radius:50%; border:6px solid #fff; box-shadow:0 8px 20px rgba(2,6,23,0.12)}
+  .hero-text h1{margin:0 0 .5rem}
+  .lead{color:var(--muted); margin-bottom:1rem}
+  .accent{color:var(--accent)}
+  
+  /* Buttons */
+  .btn-primary, .btn-primary:visited{
+    display:inline-block; background:var(--accent); color:#fff; padding:.55rem .9rem; border-radius:10px; text-decoration:none;
+  }
+  .btn-secondary{display:inline-block; background:#fff; color:#0b1220; padding:.45rem .8rem; border-radius:10px; text-decoration:none}
+  .btn-outline{display:inline-block; border:1px solid rgba(255,255,255,0.08); color:#fff; padding:.4rem .7rem; border-radius:8px; text-decoration:none}
+  
+  /* SECTIONS */
+  .section{padding:3rem 0}
+  .section-light{background:#fff}
+  .container{width:100%; max-width:var(--max-width); margin:0 auto; padding:0 1rem}
+  
+  /* CARDS / GRID */
+  .projects-grid {margin-top:1.25rem}
+  .card{border-radius:12px; overflow:hidden; box-shadow:0 6px 18px rgba(11,17,32,0.06)}
+  .card-img-top{width:100%; height:180px; object-fit:cover}
+  .card-body{padding:1rem}
+  .card-title{margin:0 0 .5rem; font-size:1.05rem}
+  
+  /* ACCORDION usando details/summary */
+  .accordion details{background:linear-gradient(180deg, rgba(250,250,250,1), rgba(245,247,250,1)); padding:0.9rem 1rem; border-radius:10px; margin-bottom:.6rem}
+  .accordion summary{cursor:pointer; list-style:none; font-weight:600; outline:none}
+  .accordion summary::-webkit-details-marker{display:none}
+  
+  /* FORM */
+  .contact-grid{display:grid; grid-template-columns:1fr; gap:0.75rem; max-width:720px}
+  .contact-grid label{display:block}
+  .contact-grid input, .contact-grid textarea{
+    width:100%; padding:.6rem; border-radius:8px; border:1px solid #dfe6ed; background:#fff;
+  }
+  
+  /* MODAL (via :target) */
+  .modal{position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(2,6,23,0.6); padding:2rem; z-index:2000}
+  .modal:target{display:flex}
+  .modal-content{background:#fff; padding:1.25rem; border-radius:12px; max-width:560px; width:100%; position:relative}
+  .modal-close{position:absolute; right:0.6rem; top:0.3rem; text-decoration:none; font-size:1.6rem; color:#333}
+  
+  /* FOOTER */
+  .site-footer{background:#071028; color:#dbeafe; padding:2rem 0 0}
+  .footer-inner{display:flex; gap:2rem; justify-content:space-between; flex-wrap:wrap; max-width:var(--max-width); margin:0 auto; padding:0 1rem}
+  .footer-col h4{margin:0 0 .5rem}
+  .footer-col p, .footer-col ul{margin:0}
+  .footer-col ul{list-style:none; padding:0}
+  .footer-col a{color:inherit; text-decoration:none}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,0.04); margin-top:1rem; padding:0.8rem 0; color:rgba(255,255,255,0.6)}
+  
+  /* RESPONSIVO */
+  @media (max-width:900px){
+    .nav-links{display:none}
+    .offcanvas-btn{display:inline-block}
+    .hero-inner{flex-direction:column; text-align:center}
+    .avatar{width:120px;height:120px}
+    .footer-inner{flex-direction:column; gap:1rem}
+  }
+  
+  .carousel-img {
+    height: 450px;           /* define altura ideal do carrossel */
+    object-fit: cover;       /* corta e mantém proporção bonita */
+    object-position: center; /* centraliza o foco da imagem */
+  }
+
+  /* Para telas menores, reduz um pouco */
+  @media (max-width: 768px) {
+    .carousel-img {
+      height: 250px;
+    }
+  }
+
+  .carousel {
+    width: 70vw; /* ocupa toda a largura visível da tela */
+    margin-left: calc(50% - 50vw); /* remove margens laterais do container */
+  }
+
+  
+  .carousel-img {
+    width: 100%;          /* garante que nunca ultrapasse a largura */
+    max-width: 100%;      /* impede que passe do limite */
+    height: 450px;        /* altura já ajustada */
+    object-fit: cover;    /* mantém proporção */
+    object-position: center center; /* centraliza foco */
+  }
+
+  #divcarrossel{
+
+    display: flex; 
+    justify-content: center;
+  }
+  
